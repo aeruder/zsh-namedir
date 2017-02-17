@@ -3,7 +3,12 @@
 # cd ~name to return to that directory.
 
 _namedir-db () {
-    echo ~/.znameddirs
+    local db
+    db="$HOME"/.znameddirs
+    if ! [ -e "$db" ]; then
+        touch "$db"
+    fi
+    echo "$db"
 }
 
 _namedir-abspath () {
